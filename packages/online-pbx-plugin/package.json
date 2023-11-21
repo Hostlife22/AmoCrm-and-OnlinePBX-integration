@@ -1,0 +1,21 @@
+{
+  "name": "@boilerplate/online-pbx-plugin",
+  "version": "1.0.0",
+  "sideEffects": false,
+  "main": "./index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint:fix": "eslint --config .eslintrc.commit.js --fix --cache --ext .ts,.tsx src",
+    "lint": "eslint --config .eslintrc.js --ext .ts,.tsx src",
+    "prettier": "prettier --check src",
+    "prettier:fix": "prettier --write src",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@boilerplate/eslint-config": "workspace:*",
+    "@types/node": "^18.15.3",
+    "eslint": "8.54.0",
+    "prettier": "^3.0.0",
+    "typescript": "5.3.2"
+  }
+}
