@@ -1,21 +1,53 @@
 {
   "name": "@boilerplate/online-pbx-plugin",
-  "version": "1.0.0",
-  "sideEffects": false,
-  "main": "./index.js",
-  "license": "MIT",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^4.5.0",
+    "web-vitals": "^2.1.4"
+  },
   "scripts": {
     "lint:fix": "eslint --config .eslintrc.commit.js --fix --cache --ext .ts,.tsx src",
     "lint": "eslint --config .eslintrc.js --ext .ts,.tsx src",
     "prettier": "prettier --check src",
     "prettier:fix": "prettier --write src",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build": "npx rollup -c"
   },
   "devDependencies": {
     "@boilerplate/eslint-config": "workspace:*",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "@types/jest": "^27.5.2",
     "@types/node": "^18.15.3",
+    "@types/react": "^18.2.38",
+    "@types/react-dom": "^18.2.16",
     "eslint": "8.54.0",
     "prettier": "^3.0.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "typescript": "5.3.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
