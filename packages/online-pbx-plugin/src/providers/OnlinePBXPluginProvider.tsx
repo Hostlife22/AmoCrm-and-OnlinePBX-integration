@@ -1,11 +1,18 @@
 import { ReactNode, createContext, useContext, useState } from "react"
 
+export enum ECallState {
+  IN_PROGRESS = "IN_PROGRESS",
+  CALL_END = "CALL_END",
+  CALLING = "CALLING",
+  INITIALIZED = "INITIALIZED",
+  NONE = "NONE",
+}
+
 interface IOnlinePBXPluginState {
   callerInfo?: {
     phoneNumber: string
   }
-  isCalling?: boolean
-  isCallInProgress?: boolean
+  state: ECallState
   initCallInfo?: {
     phoneNumber: string
   }
@@ -22,7 +29,7 @@ interface IMeProviderProps {
 }
 
 export const OnlinePBXPluginProvider = ({ children, apiKey }: IMeProviderProps) => {
-  const [providerState, setProviderState] = useState<IOnlinePBXPluginState>({})
+  const [providerState, setProviderState] = useState<IOnlinePBXPluginState>({ state: ECallState.NONE })
 
   return <onlinePBXPluginContext.Provider value={{ info: providerState }}>{children}</onlinePBXPluginContext.Provider>
 }
