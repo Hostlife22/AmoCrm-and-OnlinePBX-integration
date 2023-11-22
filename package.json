@@ -11,6 +11,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "packages:dev": "pnpm run --filter=\"./packages/*\" dev",
     "ci": "turbo run typecheck lint prettier",
     "lint": "turbo run lint",
     "fix": "turbo run lint:fix prettier:fix",

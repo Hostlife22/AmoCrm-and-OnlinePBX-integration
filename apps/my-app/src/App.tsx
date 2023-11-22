@@ -1,5 +1,6 @@
-import { OnlinePBXPluginProvider } from "@boilerplate/online-pbx-plugin"
+import { OnlinePBXPluginProvider, Widget } from "@boilerplate/online-pbx-plugin"
 
+import '@boilerplate/online-pbx-plugin/dist/index.css';
 import "./App.css"
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
           </a>
         </header>
       </div>
-     </OnlinePBXPluginProvider>
+      <Widget />
+    </OnlinePBXPluginProvider>
   )
 }
 

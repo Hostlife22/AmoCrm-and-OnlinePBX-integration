@@ -1,0 +1,10 @@
+:root {
+  --widget-max-width: 240px;
+  --widget-height: 64px;
+  --widget-padding: 12px;
+  --widget-position-padding: 32px;
+  --widget-background-color: #232323;
+  --widget-text-color: #ffffff;
+  --widget-icon-color: #ffffff;
+  --widget-container-border-radius: 8px;
+}

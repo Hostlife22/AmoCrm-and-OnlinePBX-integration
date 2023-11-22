@@ -1,10 +1,12 @@
-import * as React from "react";
 import { ReactElement } from "react"
+import cn from 'classnames';
+
+import styles from './Widget.module.css';
 
 export interface IWidgetProps {
-  phoneNumber?: string
+  className?: string;
 }
 
-export const Widget = ({ phoneNumber }: IWidgetProps): ReactElement => {
-  return <div></div>
+export const Widget = ({ className }: IWidgetProps): ReactElement => {
+  return <div className={cn(styles.container, className)}>asdasd</div>
 }

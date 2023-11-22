@@ -1,7 +1,18 @@
-import * as React from "react";
-import { ReactNode, createContext, useContext } from "react"
+import { ReactNode, createContext, useContext, useState } from "react"
 
-export interface IOnlinePBXPluginContext {}
+interface IOnlinePBXPluginState {
+  callerInfo?: {
+    phoneNumber: string
+  }
+  isCalling?: boolean
+  isCallInProgress?: boolean
+  initCallInfo?: {
+    phoneNumber: string
+  }
+}
+interface IOnlinePBXPluginContext {
+  info: IOnlinePBXPluginState
+}
 
 const onlinePBXPluginContext = createContext<IOnlinePBXPluginContext | undefined>(undefined)
 
@@ -11,7 +22,9 @@ interface IMeProviderProps {
 }
 
 export const OnlinePBXPluginProvider = ({ children, apiKey }: IMeProviderProps) => {
-  return <onlinePBXPluginContext.Provider value={{}}>{children}</onlinePBXPluginContext.Provider>
+  const [providerState, setProviderState] = useState<IOnlinePBXPluginState>({})
+
+  return <onlinePBXPluginContext.Provider value={{ info: providerState }}>{children}</onlinePBXPluginContext.Provider>
 }
 
 export const useOnlinePBXPluginContext = () => {

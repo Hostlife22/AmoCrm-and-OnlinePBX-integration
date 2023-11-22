@@ -1,0 +1,10 @@
+.container {
+  position: fixed;
+  width: 100%;
+  top: var(--widget-position-padding);
+  right: var(--widget-position-padding);
+  max-width: var(--widget-max-width);
+  background-color: var(--widget-background-color);
+  border-radius: var(--widget-container-border-radius);
+  padding: var(--widget-padding);
+}
