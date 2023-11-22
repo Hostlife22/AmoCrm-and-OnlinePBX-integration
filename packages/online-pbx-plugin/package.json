@@ -30,6 +30,7 @@
     "@types/node": "^18.15.3",
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.16",
+    "@types/rollup-plugin-peer-deps-external": "^2.2.4",
     "eslint": "8.54.0",
     "prettier": "^3.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",

@@ -6,7 +6,7 @@ import typescript from "@rollup/plugin-typescript" // For Typescript
 
 const config = [
   {
-    input: "./src/index.ts",
+    input: "./index.ts",
     output: [
       {
         file: "dist/index.js",

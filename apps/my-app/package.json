@@ -10,7 +10,7 @@
     "@types/node": "^16.18.63",
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.16",
-    "@boilerplate/online-pbx-plugin": "workspace:*", 
+    "@boilerplate/online-pbx-plugin": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -21,8 +21,7 @@
     "@boilerplate/eslint-config": "workspace:*",
     "dotenv-cli": "^7.1.0",
     "eslint": "8.54.0",
-    "prettier": "^3.0.0",
-    "tsconfig": "workspace:*"
+    "prettier": "^3.0.0"
   },
   "scripts": {
     "dev": "pnpm with-env react-scripts start",
