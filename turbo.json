@@ -2,13 +2,22 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["build/**", "public/build/**"]
+      "outputs": ["build/**", "dist/**"],
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "outputs": ["coverage/**"],
+      "dependsOn": []
+    },
+    "lint": { "outputs": [] },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
     },
     "fix": {
-      "outputs": []
-    },
-    "lint": {
       "outputs": []
     },
     "lint:fix": {
@@ -18,13 +27,6 @@
       "outputs": []
     },
     "prettier:fix": {
-      "outputs": []
-    },
-    "dev": {
-      "cache": false
-    },
-    "typecheck": {
-      "dependsOn": ["^build"],
       "outputs": []
     }
   }

@@ -1,6 +1,7 @@
+import * as React from "react";
 import { ReactNode, createContext, useContext } from "react"
 
-interface IOnlinePBXPluginContext {}
+export interface IOnlinePBXPluginContext {}
 
 const onlinePBXPluginContext = createContext<IOnlinePBXPluginContext | undefined>(undefined)
 

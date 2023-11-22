@@ -1,6 +1,7 @@
+import * as React from "react";
 import { ReactElement } from "react"
 
-interface IWidgetProps {
+export interface IWidgetProps {
   phoneNumber?: string
 }
 

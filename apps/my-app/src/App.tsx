@@ -15,7 +15,7 @@ function App() {
           </a>
         </header>
       </div>
-    </OnlinePBXPluginProvider>
+     </OnlinePBXPluginProvider>
   )
 }
 
