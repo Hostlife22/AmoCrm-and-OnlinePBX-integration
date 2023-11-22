@@ -1,11 +1,15 @@
 import { OnlinePBXPluginProvider, Widget } from "@boilerplate/online-pbx-plugin"
 
-import '@boilerplate/online-pbx-plugin/dist/index.css';
+import "@boilerplate/online-pbx-plugin/dist/index.css"
 import "./App.css"
 
 function App() {
   return (
-    <OnlinePBXPluginProvider apiKey="123">
+    <OnlinePBXPluginProvider
+      apiKey="bG1nOUprY1FIVmFDZEY1ZlhONTkzOGNwaFZmczlqdG8"
+      accountName="pbx21135.onpbx.ru
+"
+    >
       <div className="App">
         <header className="App-header">
           <p>

@@ -1,10 +1,10 @@
 .container {
   position: fixed;
-  width: 100%;
   top: var(--widget-position-padding);
   right: var(--widget-position-padding);
+  width: 100%;
   max-width: var(--widget-max-width);
+  padding: var(--widget-padding);
   background-color: var(--widget-background-color);
   border-radius: var(--widget-container-border-radius);
-  padding: var(--widget-padding);
 }
