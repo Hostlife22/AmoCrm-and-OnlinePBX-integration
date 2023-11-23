@@ -1,10 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   --widget-max-width: 240px;
-  --widget-height: 64px;
+  --widget-size: 48px;
+  --widget-z-index: 1000;
+  --widget-call-height: 64px;
   --widget-padding: 12px;
   --widget-position-padding: 32px;
+  --widget-container-border-radius: 8px;
+  --widget-transition: 300ms;
   --widget-background-color: #232323;
+  --widget-input-border: #464646;
   --widget-text-color: #ffffff;
   --widget-icon-color: #ffffff;
-  --widget-container-border-radius: 8px;
+  --widget-accent-color-1: #109d00;
+  --widget-accent-color-2: #bb0707;
+  --widget-accent-color-3: #61dafb;
 }

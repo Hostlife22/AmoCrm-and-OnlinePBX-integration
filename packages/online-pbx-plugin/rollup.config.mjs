@@ -1,8 +1,12 @@
 import babel from "@rollup/plugin-babel"
-import resolve from "@rollup/plugin-node-resolve"
 import external from "rollup-plugin-peer-deps-external"
 import terser from "@rollup/plugin-terser"
 import typescript from "@rollup/plugin-typescript" // For Typescript
+import postcss from "rollup-plugin-postcss-modules"
+import commonjs from "@rollup/plugin-commonjs"
+import { nodeResolve } from "@rollup/plugin-node-resolve"
+
+import autoprefixer from "autoprefixer"
 
 const config = [
   {
@@ -18,6 +22,7 @@ const config = [
         exports: "named",
       },
     ],
+    external: ["phone"],
     plugins: [
       babel({
         exclude: "node_modules/**",
@@ -26,9 +31,15 @@ const config = [
       external({
         includeDependencies: true,
       }),
-      resolve(),
+      commonjs(),
+      nodeResolve(),
       terser(),
-      typescript(),
+      postcss({
+        extract: true, // extracts to `${basename(dest)}.css`
+        plugins: [autoprefixer()],
+        // writeDefinitions: true,
+      }),
+      typescript({ sourceMap: true }),
     ],
   },
 ]

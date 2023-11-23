@@ -3,12 +3,12 @@ import cloneDeep from "lodash.clonedeep"
 import wsConnect from "../services/wsConnect"
 
 export enum ECallState {
-  IN_PROGRESS = "IN_PROGRESS",
-  CALL_END = "CALL_END",
+  CALL_IN_PROGRESS = "CALL_IN_PROGRESS",
   CALLING = "CALLING",
-  INITIALIZED = "INITIALIZED",
-  NONE = "NONE",
+  AWAITING_ACCEPTANCE = "WAITING_FOR_ACCEPTANCE",
+  NO_ACTION = "NO_ACTION",
 }
+
 export enum ETypeAction {
   SET_CALLS = "setCalls",
   SET_GATEWAY = "setGateway",
@@ -38,6 +38,13 @@ export interface IInitialState {
   userBlf: boolean
 }
 
+export interface IOnlinePBXPluginProviderState {
+  callerInfo?: {
+    phoneNumber: string
+  }
+  action: ECallState
+}
+
 const reducer = (state: IInitialState, action: TEventActions) => {
   const newState = cloneDeep(state)
   switch (action.type) {
@@ -56,19 +63,19 @@ const reducer = (state: IInitialState, action: TEventActions) => {
   }
 }
 
-interface IOnlinePBXPluginState {
-  callerInfo?: {
-    phoneNumber: string
-  }
-  state: ECallState
-  initCallInfo?: {
-    phoneNumber: string
-  }
-}
+export type TActionProps = { onSuccess?: () => void }
+
+export type TMakeCall = (phoneNumber: string, props?: TActionProps) => void
+export type TResetCall = (props?: TActionProps) => void
+export type TAcceptCall = (props?: TActionProps) => void
+
 interface IOnlinePBXPluginContext {
-  info: IOnlinePBXPluginState
   dispatch: React.Dispatch<TEventActions>
   state: IInitialState
+  callInfo: IOnlinePBXPluginProviderState
+  makeCall: TMakeCall
+  resetCall: TResetCall
+  acceptCall: TAcceptCall
 }
 
 const onlinePBXPluginContext = createContext<IOnlinePBXPluginContext | undefined>(undefined)
@@ -89,8 +96,43 @@ export const OnlinePBXPluginProvider = ({ children, apiKey, accountName }: IMePr
     userRegistration: false,
     userBlf: false,
   })
+  const [providerState, setProviderState] = useState<IOnlinePBXPluginProviderState>({ action: ECallState.NO_ACTION })
+
   const [events, setEvents] = useState("")
-  const [providerState, setProviderState] = useState<IOnlinePBXPluginState>({ state: ECallState.NONE })
+
+  const makeCall: TMakeCall = (phoneNumber, props): void => {
+    setProviderState((prev) => ({
+      ...prev,
+      action: ECallState.CALLING,
+      callerInfo: {
+        phoneNumber,
+      },
+    }))
+    if (props?.onSuccess) {
+      props.onSuccess()
+    }
+  }
+
+  const resetCall: TResetCall = (props): void => {
+    setProviderState((prev) => ({
+      ...prev,
+      action: ECallState.NO_ACTION,
+      callerInfo: undefined,
+    }))
+    if (props?.onSuccess) {
+      props.onSuccess()
+    }
+  }
+
+  const acceptCall: TAcceptCall = (props): void => {
+    setProviderState((prev) => ({
+      ...prev,
+      action: ECallState.CALL_IN_PROGRESS,
+    }))
+    if (props?.onSuccess) {
+      props.onSuccess()
+    }
+  }
 
   useEffect(() => {
     if (state.isConnect && accountName && apiKey) wsConnect(state, setEvents)
@@ -98,7 +140,9 @@ export const OnlinePBXPluginProvider = ({ children, apiKey, accountName }: IMePr
   }, [state.isConnect])
 
   return (
-    <onlinePBXPluginContext.Provider value={{ info: providerState, dispatch, state }}>{children}</onlinePBXPluginContext.Provider>
+    <onlinePBXPluginContext.Provider value={{ dispatch, callInfo: providerState, state, makeCall, resetCall, acceptCall }}>
+      {children}
+    </onlinePBXPluginContext.Provider>
   )
 }
 
