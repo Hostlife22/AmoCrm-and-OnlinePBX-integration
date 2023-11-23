@@ -1,52 +1,22 @@
 import { ReactNode, createContext, useContext, useEffect, useReducer, useRef, useState } from "react"
 import cloneDeep from "lodash.clonedeep"
+
 import wsConnect from "../services/wsConnect"
-import { Api, IApiInstance } from "../services/api"
+import { Api } from "../services/api"
+import {
+  ECallState,
+  ETypeAction,
+  IApiInstance,
+  IOnlinePBXPluginContext,
+  IOnlinePBXPluginProviderState,
+  IReducerState,
+  TAcceptCall,
+  TEventActions,
+  TMakeCall,
+  TResetCall,
+} from "../types"
 
-export enum ECallState {
-  CALL_IN_PROGRESS = "CALL_IN_PROGRESS",
-  CALLING = "CALLING",
-  AWAITING_ACCEPTANCE = "WAITING_FOR_ACCEPTANCE",
-  NO_ACTION = "NO_ACTION",
-}
-
-export enum ETypeAction {
-  SET_CALLS = "setCalls",
-  SET_GATEWAY = "setGateway",
-  SET_IS_CONNECT = "setIsConnect",
-  SET_USER_BLF = "setUserBlf",
-  SET_USER_REGISTRATION = "setUserRegistration",
-}
-export type TEventActions = {
-  type:
-    | ETypeAction.SET_CALLS
-    | ETypeAction.SET_GATEWAY
-    | ETypeAction.SET_GATEWAY
-    | ETypeAction.SET_IS_CONNECT
-    | ETypeAction.SET_USER_BLF
-    | ETypeAction.SET_USER_REGISTRATION
-  payload: {
-    eventName: boolean
-  }
-}
-export interface IInitialState {
-  accountName: string
-  apiKey: string
-  calls: boolean
-  gateway: boolean
-  isConnect: boolean
-  userRegistration: boolean
-  userBlf: boolean
-}
-
-export interface IOnlinePBXPluginProviderState {
-  callerInfo?: {
-    phoneNumber: string
-  }
-  action: ECallState
-}
-
-const reducer = (state: IInitialState, action: TEventActions) => {
+const reducer = (state: IReducerState, action: TEventActions) => {
   const newState = cloneDeep(state)
   switch (action.type) {
     case ETypeAction.SET_CALLS:
@@ -62,21 +32,6 @@ const reducer = (state: IInitialState, action: TEventActions) => {
     default:
       return newState
   }
-}
-
-export type TActionProps = { onSuccess?: () => void }
-
-export type TMakeCall = (phoneNumber: string, props?: TActionProps) => void
-export type TResetCall = (props?: TActionProps) => void
-export type TAcceptCall = (props?: TActionProps) => void
-
-interface IOnlinePBXPluginContext {
-  dispatch: React.Dispatch<TEventActions>
-  state: IInitialState
-  callInfo: IOnlinePBXPluginProviderState
-  makeCall: TMakeCall
-  resetCall: TResetCall
-  acceptCall: TAcceptCall
 }
 
 const onlinePBXPluginContext = createContext<IOnlinePBXPluginContext | undefined>(undefined)
@@ -148,6 +103,7 @@ export const OnlinePBXPluginProvider = ({ children, apiKey, accountName }: IMePr
     return () => {
       authFetchedRef.current = true
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

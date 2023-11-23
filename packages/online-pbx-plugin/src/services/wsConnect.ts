@@ -1,9 +1,9 @@
 import WebSocket from "isomorphic-ws"
 
 import { dateCreator, dataFormatter } from "../utils"
-import { IInitialState } from "src/providers"
+import { IReducerState } from "../types"
 
-const wsConnect = (props: IInitialState, setEvents: React.Dispatch<React.SetStateAction<string>>) => {
+const wsConnect = (props: IReducerState, setEvents: React.Dispatch<React.SetStateAction<string>>) => {
   const account = props.accountName
   const apiKey = props.apiKey
   const calls = props.calls ? "calls" : ""

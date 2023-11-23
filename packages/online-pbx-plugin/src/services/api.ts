@@ -1,32 +1,24 @@
-import { AxiosInstance } from "axios"
-import axios from 'axios';
-
-interface IApiRequests {
-  auth: string
-}
-
-export interface IApiInstance {
-  authenticate: () => Promise<void>
-  getKey: () => Promise<void>
-}
+import axios, { AxiosInstance, AxiosResponse } from "axios"
+import { IApiInstance, IApiUrlRequests } from "../types"
 
 export class Api implements IApiInstance {
   private instance: AxiosInstance
-  private requests: IApiRequests
+  private requests: IApiUrlRequests
   private keyId: string | null = null
   private key: string | null = null
+  private lastApiCallTimestamp: number = 0
 
   constructor(
     private apiKey: string,
     private domain: string,
   ) {
-    console.log(axios);
     this.instance = axios.create({
       baseURL: "https://api.onlinepbx.ru/",
     })
     this.requests = {
       auth: `/${this.domain}/auth.json`,
     }
+    this.loadFromLocalStorage()
   }
 
   private setAuthenticationHeaders(): void {
@@ -35,29 +27,53 @@ export class Api implements IApiInstance {
     }
   }
 
+  private updateLastApiCallTimestamp(): void {
+    this.lastApiCallTimestamp = Date.now()
+    localStorage.setItem("lastApiCallTimestamp", this.lastApiCallTimestamp.toString())
+  }
+
+  private shouldRefreshKey(): boolean {
+    const threeDaysInMilliseconds = 3 * 24 * 60 * 60 * 1000
+    return Date.now() - this.lastApiCallTimestamp > threeDaysInMilliseconds
+  }
+
+  private saveToLocalStorage(): void {
+    localStorage.setItem("keyId", this.keyId || "")
+    localStorage.setItem("key", this.key || "")
+  }
+
+  private loadFromLocalStorage(): void {
+    this.keyId = localStorage.getItem("keyId") || null
+    this.key = localStorage.getItem("key") || null
+    this.lastApiCallTimestamp = parseInt(localStorage.getItem("lastApiCallTimestamp") || "0", 10)
+  }
+
   public async authenticate(): Promise<void> {
     try {
-      const headers = {
-        "Content-Type": "application/x-www-form-urlencoded",
-      }
-      const payload = new URLSearchParams()
-      payload.append("auth_key", this.apiKey)
+      if (!this.keyId || !this.key || this.shouldRefreshKey()) {
+        const headers = { "Content-Type": "application/x-www-form-urlencoded" }
+        const payload = new URLSearchParams()
+        payload.append("auth_key", this.apiKey)
 
-      const response = await this.instance.post(this.requests.auth, payload.toString(), { headers })
-      if (response.data && response.data.status === "1") {
-        this.keyId = response.data.data.key_id
-        this.key = response.data.data.key
-        this.setAuthenticationHeaders()
+        const response: AxiosResponse = await this.instance.post(this.requests.auth, payload.toString(), { headers })
+        console.log(response, response.data)
+
+        if (response.data && response.data.status === "1") {
+          this.keyId = response.data.data.key_id
+          this.key = response.data.data.key
+          this.setAuthenticationHeaders()
+          this.updateLastApiCallTimestamp()
+          this.saveToLocalStorage()
+        }
       }
-      console.log(response)
-    } catch (err) {}
+    } catch (error) {}
   }
 
   public async getKey(): Promise<void> {
     try {
-      if (!this.keyId || !this.key) {
+      if (!this.keyId || !this.key || this.shouldRefreshKey()) {
         await this.authenticate()
       }
-    } catch (err) {}
+    } catch (error) {}
   }
 }

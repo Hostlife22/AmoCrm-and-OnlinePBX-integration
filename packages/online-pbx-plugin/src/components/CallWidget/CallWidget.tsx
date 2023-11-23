@@ -1,9 +1,10 @@
 import classNames from "classnames"
 
 import { Button } from "../Button"
-import { ECallState, useOnlinePBXPluginContext } from "../../providers"
+import { ECallState } from "../../types"
 import { PhoneIcon, PhoneXIcon } from "../../assets"
 import { Timer } from "../Timer"
+import { useOnlinePBXPluginContext } from "../../providers"
 
 import styles from "./CallWidget.module.css"
 

@@ -2,7 +2,8 @@ import { ChangeEvent, FormEvent, ReactElement, useEffect, useState } from "react
 import cn from "classnames"
 import { phone } from "phone"
 
-import { ECallState, TEventActions, useOnlinePBXPluginContext } from "../../providers"
+import { useOnlinePBXPluginContext } from "../../providers"
+import { ECallState, TEventActions } from "../../types"
 import { PhoneIcon } from "../../assets"
 import { Button } from "../Button"
 import { Input } from "../Input"
