@@ -1,9 +1,10 @@
 export interface IApiUrlRequests {
   auth: string
+  instantCallNow: string
 }
 export interface IApiInstance {
   authenticate: () => Promise<void>
-  getKey: () => Promise<void>
+  instantCallNow: (requestData: IInstantCallNowRequest) => Promise<string | null>
 }
 
 export enum EResponseStatus {
@@ -35,4 +36,22 @@ export interface IAuthResponse {
   isNotAuth?: boolean
   data?: IAuthResponseData
   errorCode?: EErrorCode
+}
+
+export interface IInstantCallNowRequest {
+  from: string
+  to: string
+  gateFrom: string
+  gateTo: string
+  toDomain: string
+  fromOrigNumber: string
+  fromOrigName: string
+}
+
+export interface IInstantCallNowResponse {
+  status: EResponseStatus
+  comment?: string
+  data?: {
+    uuid: string
+  }
 }
