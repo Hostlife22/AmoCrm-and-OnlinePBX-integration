@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useEffect, useReducer, useState } from "react"
+import { ReactNode, createContext, useContext, useEffect, useReducer, useRef, useState } from "react"
 import cloneDeep from "lodash.clonedeep"
 import wsConnect from "../services/wsConnect"
 import { Api, IApiInstance } from "../services/api"
@@ -100,6 +100,7 @@ export const OnlinePBXPluginProvider = ({ children, apiKey, accountName }: IMePr
   const [providerState, setProviderState] = useState<IOnlinePBXPluginProviderState>({ action: ECallState.NO_ACTION })
   const [apiService] = useState<IApiInstance>(new Api(apiKey, accountName))
   const [events, setEvents] = useState("")
+  const authFetchedRef = useRef(false)
 
   const makeCall: TMakeCall = (phoneNumber, props): void => {
     setProviderState((prev) => ({
@@ -141,7 +142,12 @@ export const OnlinePBXPluginProvider = ({ children, apiKey, accountName }: IMePr
   }, [state.isConnect])
 
   useEffect(() => {
-    if (accountName && apiKey) apiService.authenticate()
+    if (!authFetchedRef.current && accountName && apiKey) {
+      apiService.authenticate()
+    }
+    return () => {
+      authFetchedRef.current = true
+    }
   }, [])
 
   return (
