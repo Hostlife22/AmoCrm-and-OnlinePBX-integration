@@ -41,11 +41,11 @@ export interface IAuthResponse {
 export interface IInstantCallNowRequest {
   from: string
   to: string
-  gateFrom: string
-  gateTo: string
-  toDomain: string
-  fromOrigNumber: string
-  fromOrigName: string
+  gateFrom?: string
+  gateTo?: string
+  toDomain?: string
+  fromOrigNumber?: string
+  fromOrigName?: string
 }
 
 export interface IInstantCallNowResponse {

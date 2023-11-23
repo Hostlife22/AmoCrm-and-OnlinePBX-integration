@@ -101,11 +101,12 @@ export class Api implements IApiInstance {
         const payload = new URLSearchParams()
         payload.append("from", requestData.from)
         payload.append("to", requestData.to)
-        payload.append("gate_from", requestData.gateFrom)
-        payload.append("gate_to", requestData.gateTo)
-        payload.append("to_domain", requestData.toDomain)
-        payload.append("from_orig_number", requestData.fromOrigNumber)
-        payload.append("from_orig_name", requestData.fromOrigName)
+
+        if (requestData.gateFrom) payload.append("gate_from", requestData.gateFrom)
+        if (requestData.gateTo) payload.append("gate_to", requestData.gateTo)
+        if (requestData.toDomain) payload.append("to_domain", requestData.toDomain)
+        if (requestData.fromOrigNumber) payload.append("from_orig_number", requestData.fromOrigNumber)
+        if (requestData.fromOrigName) payload.append("from_orig_name", requestData.fromOrigName)
 
         const response: AxiosResponse<IInstantCallNowResponse> = await this.instance.post(
           this.requests.instantCallNow,
