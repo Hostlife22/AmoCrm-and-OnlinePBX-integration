@@ -1,10 +1,13 @@
 export interface IApiUrlRequests {
   auth: string
   instantCallNow: string
+  instantCallInstantly: string
 }
+
+export type TInstallCallType = "now" | "instantly"
 export interface IApiInstance {
   authenticate: () => Promise<void>
-  instantCallNow: (requestData: IInstantCallNowRequest) => Promise<string | null>
+  instantCall: (type: TInstallCallType, requestData: IInstantCallNowRequest) => Promise<string | null>
 }
 
 export enum EResponseStatus {
@@ -18,10 +21,12 @@ export enum EErrorCode {
   TooManyRequests = "TOO_MANY_REQUESTS",
   ValidationFailed = "VALIDATION_FAILED",
   Internal = "INTERNAL",
+  ForbiddenIp = "FORBIDDEN_IP",
   WrongAuthData = "WRONG_AUTH_DATA",
   ApiKeyNotSpecified = "API_KEY_NOT_SPECIFIED",
-  ForbiddenIp = "FORBIDDEN_IP",
   WrongApiKey = "WRONG_API_KEY",
+  ApiKeyCheckFailed = "API_KEY_CHECK_FAILED",
+  WrongGateway = "WRONG_GATEWAY",
 }
 
 export interface IAuthResponseData {
@@ -54,4 +59,5 @@ export interface IInstantCallNowResponse {
   data?: {
     uuid: string
   }
+  errorCode?: EErrorCode
 }

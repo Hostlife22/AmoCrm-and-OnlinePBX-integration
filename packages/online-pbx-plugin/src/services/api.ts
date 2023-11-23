@@ -6,6 +6,7 @@ import {
   IAuthResponse,
   IInstantCallNowRequest,
   IInstantCallNowResponse,
+  TInstallCallType,
 } from "../types"
 
 export class Api implements IApiInstance {
@@ -25,6 +26,7 @@ export class Api implements IApiInstance {
     this.requests = {
       auth: `/${this.domain}/auth.json`,
       instantCallNow: `/${this.domain}/call/now.json`,
+      instantCallInstantly: `/${this.domain}/call/instantly.json`,
     }
     this.loadFromLocalStorage()
     this.setAuthenticationHeaders()
@@ -94,7 +96,7 @@ export class Api implements IApiInstance {
     }
   }
 
-  public async instantCallNow(requestData: IInstantCallNowRequest): Promise<string | null> {
+  public async instantCall(type: TInstallCallType, requestData: IInstantCallNowRequest): Promise<string | null> {
     try {
       const gotKey = await this.getKey()
       if (gotKey) {
@@ -108,10 +110,8 @@ export class Api implements IApiInstance {
         if (requestData.fromOrigNumber) payload.append("from_orig_number", requestData.fromOrigNumber)
         if (requestData.fromOrigName) payload.append("from_orig_name", requestData.fromOrigName)
 
-        const response: AxiosResponse<IInstantCallNowResponse> = await this.instance.post(
-          this.requests.instantCallNow,
-          payload.toString(),
-        )
+        const url = type === "now" ? this.requests.instantCallNow : this.requests.instantCallInstantly
+        const response: AxiosResponse<IInstantCallNowResponse> = await this.instance.post(url, payload.toString())
         if (response.status === 200) {
           if (response && response.data.status === EResponseStatus.Success && response.data.data) {
             console.log(`Instant call initiated successfully. UUID: ${response.data.data.uuid}`)
