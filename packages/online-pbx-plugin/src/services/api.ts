@@ -131,7 +131,7 @@ export class Api implements IApiInstance {
       }
       return null
     } catch (error) {
-      console.error(`Instant call initiation error. Something was wrong`)
+      console.error(`Instant call initiation error. Something was wrong: ${error}`)
       return null
     }
   }

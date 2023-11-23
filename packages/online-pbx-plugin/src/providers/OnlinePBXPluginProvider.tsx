@@ -40,10 +40,12 @@ interface IMeProviderProps {
   accountName: string
   apiKey: string
   children: ReactNode
+  /** PBX external number. @see https://kb.onlinepbx.ru/confluence/pages/viewpage.action?pageId=33752474#id-%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0%D0%B2%D1%85%D0%BE%D0%B4%D1%8F%D1%89%D0%B8%D1%85%D0%B7%D0%B2%D0%BE%D0%BD%D0%BA%D0%BE%D0%B2-1.%D0%9D%D0%BE%D0%BC%D0%B5%D1%80 */
+  pbxExternalNumber: string
   wsPort?: number
 }
 
-export const OnlinePBXPluginProvider = ({ children, apiKey, accountName, wsPort }: IMeProviderProps) => {
+export const OnlinePBXPluginProvider = ({ children, apiKey, accountName, pbxExternalNumber, wsPort }: IMeProviderProps) => {
   const [state, dispatch] = useReducer(reducer, {
     accountName,
     apiKey,
@@ -63,13 +65,19 @@ export const OnlinePBXPluginProvider = ({ children, apiKey, accountName, wsPort 
   const authFetchedRef = useRef(false)
 
   const makeCall: TMakeCall = (phoneNumber, props): void => {
-    setProviderState((prev) => ({
-      ...prev,
-      action: ECallState.CALLING,
-      callerInfo: {
-        phoneNumber,
-      },
-    }))
+    // apiService.instantCall("instantly", { from: pbxExternalNumber, to: phoneNumber }).then((data) => {
+    //   if (data) {
+        setProviderState((prev) => ({
+          ...prev,
+          action: ECallState.CALLING,
+          callInfo: {
+            ...prev.callInfo,
+            caller_number: phoneNumber,
+            // call_uuid: data,
+          },
+        }))
+    //   }
+    // })
     if (props?.onSuccess) {
       props.onSuccess()
     }

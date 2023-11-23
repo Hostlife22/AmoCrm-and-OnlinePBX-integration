@@ -12,6 +12,7 @@ import {
   ITransferCallData,
   TWsEvent,
 } from "./ws-types"
+import { useNotifications } from "../hooks"
 
 interface IStateManagement {
   state: IOnlinePBXPluginProviderState
@@ -19,6 +20,7 @@ interface IStateManagement {
 }
 
 export const useWebsocket = (props: IReducerState, { setState, state }: IStateManagement) => {
+  const {sendNotification} = useNotifications();
   const account = props.accountName
   const apiKey = props.apiKey
   const port = props.wsPort || 3342
@@ -33,7 +35,6 @@ export const useWebsocket = (props: IReducerState, { setState, state }: IStateMa
   const wsRef = useRef<WebSocket>()
 
   const connect = useCallback(() => {
-    console.log(wsRef.current)
     if (!wsRef.current) {
       wsRef.current = new WebSocket(`wss://${account}:${port}/?key=${apiKey}`)
     }
@@ -47,7 +48,7 @@ export const useWebsocket = (props: IReducerState, { setState, state }: IStateMa
           },
         }),
       )
-      console.log("Connect")
+      console.log("connected")
     }
 
     ws.onmessage = (event: WebSocket.MessageEvent): void => {
@@ -61,7 +62,7 @@ export const useWebsocket = (props: IReducerState, { setState, state }: IStateMa
           }
           case EWsEvents.channel_answer: {
             const future = data as IEventData[typeof data.event]
-
+            sendNotification('Customer answer')
             setState((prev) => ({
               ...prev,
               callInfo: {
@@ -74,7 +75,7 @@ export const useWebsocket = (props: IReducerState, { setState, state }: IStateMa
           }
           case EWsEvents.channel_create: {
             const future = data as IEventData[typeof data.event]
-
+            sendNotification('Customer is calling')
             setState((prev) => ({
               ...prev,
               action: future.data.direction === "inbound" ? "WAITING_FOR_ACCEPTANCE" : "CALLING",
@@ -193,7 +194,7 @@ export const useWebsocket = (props: IReducerState, { setState, state }: IStateMa
           }
           case EWsEvents.transferred: {
             const future = data as IEventData[typeof data.event]
-
+            sendNotification('Customer call is transferred')
             setState((prev) => ({
               ...prev,
               callInfo: prev.callInfo
@@ -216,7 +217,7 @@ export const useWebsocket = (props: IReducerState, { setState, state }: IStateMa
         }
       }
     }
-  }, [account, apiKey, groupNames, port, setState])
+  }, [account, apiKey, groupNames, port, sendNotification, setState])
 
   const transferCall = useCallback((data: ITransferCallData) => {
     if (wsRef.current) {

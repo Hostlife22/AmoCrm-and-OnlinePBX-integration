@@ -1,20 +1,18 @@
 import { OnlinePBXPluginProvider, Widget, CallWidget } from "@boilerplate/online-pbx-plugin"
 
 import "@boilerplate/online-pbx-plugin/dist/index.css"
+import svg from "./logo.svg"
 import "./App.css"
 
 function App() {
   return (
-    <OnlinePBXPluginProvider apiKey={process.env.REACT_APP_API_KEY || ""} accountName={process.env.REACT_APP_ACCOUNT_NAME || ""}>
+    <OnlinePBXPluginProvider
+      apiKey={process.env.REACT_APP_API_KEY || ""}
+      accountName={process.env.REACT_APP_ACCOUNT_NAME || ""}
+      pbxExternalNumber={process.env.REACT_APP_PBX_EXTERNAL_NUMBER || ""}
+    >
       <div className="App">
-        <header className="App-header">
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-            Learn React
-          </a>
-        </header>
+        <img className="App-logo" src={svg} alt="" />
       </div>
       <Widget />
       <CallWidget />
