@@ -2,12 +2,12 @@ import { ChangeEvent, FormEvent, ReactElement, useEffect, useState } from "react
 import cn from "classnames"
 import { phone } from "phone"
 
-import { ECallState, ETypeAction, TEventActions, useOnlinePBXPluginContext } from "../../providers"
+import { ECallState, TEventActions, useOnlinePBXPluginContext } from "../../providers"
 import { PhoneIcon } from "../../assets"
 import { Button } from "../Button"
+import { Input } from "../Input"
 
 import styles from "./Widget.module.css"
-import { Input } from "../Input"
 
 export interface IWidgetProps {
   className?: string

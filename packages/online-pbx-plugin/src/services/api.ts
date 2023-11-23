@@ -1,3 +1,6 @@
+import { AxiosInstance } from "axios"
+import axios from 'axios';
+
 interface IApiRequests {
   auth: string
 }
@@ -8,7 +11,7 @@ export interface IApiInstance {
 }
 
 export class Api implements IApiInstance {
-  private baseUrl: string
+  private instance: AxiosInstance
   private requests: IApiRequests
   private keyId: string | null = null
   private key: string | null = null
@@ -17,7 +20,10 @@ export class Api implements IApiInstance {
     private apiKey: string,
     private domain: string,
   ) {
-    this.baseUrl = "https://api.onlinepbx.ru/"
+    console.log(axios);
+    this.instance = axios.create({
+      baseURL: "https://api.onlinepbx.ru/",
+    })
     this.requests = {
       auth: `/${this.domain}/auth.json`,
     }
@@ -25,8 +31,7 @@ export class Api implements IApiInstance {
 
   private setAuthenticationHeaders(): void {
     if (this.keyId && this.key) {
-      // Implement your header setting logic if needed
-      // For example, you can set headers in the fetch options
+      this.instance.defaults.headers.common["x-pbx-authentication"] = `${this.keyId}:${this.key}`
     }
   }
 
@@ -38,24 +43,14 @@ export class Api implements IApiInstance {
       const payload = new URLSearchParams()
       payload.append("auth_key", this.apiKey)
 
-      const response = await fetch(this.baseUrl + this.requests.auth, {
-        method: "POST",
-        headers: headers,
-        body: payload.toString(),
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        console.log(data)
-        if (data.status === "1") {
-          this.keyId = data.data.key_id
-          this.key = data.data.key
-          this.setAuthenticationHeaders()
-        }
+      const response = await this.instance.post(this.requests.auth, payload.toString(), { headers })
+      if (response.data && response.data.status === "1") {
+        this.keyId = response.data.data.key_id
+        this.key = response.data.data.key
+        this.setAuthenticationHeaders()
       }
-    } catch (err) {
-      console.error(err)
-    }
+      console.log(response)
+    } catch (err) {}
   }
 
   public async getKey(): Promise<void> {
@@ -63,8 +58,6 @@ export class Api implements IApiInstance {
       if (!this.keyId || !this.key) {
         await this.authenticate()
       }
-    } catch (err) {
-      console.error(err)
-    }
+    } catch (err) {}
   }
 }
