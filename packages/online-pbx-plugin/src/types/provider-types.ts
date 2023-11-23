@@ -22,6 +22,7 @@ export type TEventActions = {
 export interface IReducerState {
   accountName: string
   apiKey: string
+  wsPort?: number
   calls: boolean
   gateway: boolean
   isConnect: boolean
@@ -30,10 +31,18 @@ export interface IReducerState {
 }
 
 export interface IOnlinePBXPluginProviderState {
-  callerInfo?: {
-    phoneNumber: string
+  callInfo?: {
+    caller_number: string
+    destination_number?: string
+    gateway_number?: string
+    caller_name?: string
+    channel_uuid?: string
+    call_uuid?: string
+    isHold?: boolean
   }
-  action: ECallState
+  subscribed: boolean
+  errorMessage?: string;
+  action: `${ECallState}`
 }
 
 export type TActionProps = { onSuccess?: () => void }

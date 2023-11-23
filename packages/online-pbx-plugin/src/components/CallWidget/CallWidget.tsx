@@ -27,7 +27,7 @@ export const CallWidget = ({ className }: ICallWidgetProps) => {
       className={classNames(styles.container, { [styles.container_hidden]: callInfo.action === ECallState.NO_ACTION }, className)}
     >
       <div className={styles.callerInfo}>
-        <p className={styles.callerInfoText}>{callInfo?.callerInfo?.phoneNumber}</p>
+        <p className={styles.callerInfoText}>{callInfo?.callInfo?.caller_number || "-"}</p>
       </div>
       <div className={styles.bodyContainer}>
         <div className={styles.timeContainer}>

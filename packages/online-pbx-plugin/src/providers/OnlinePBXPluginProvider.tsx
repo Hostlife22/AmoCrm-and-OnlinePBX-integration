@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useContext, useEffect, useReducer, useRef, useState } from "react"
 import cloneDeep from "lodash.clonedeep"
 
-import wsConnect from "../services/wsConnect"
+import { useWebsocket } from "../services/wsConnect"
 import { Api } from "../services/api"
 import {
   ECallState,
@@ -37,24 +37,29 @@ const reducer = (state: IReducerState, action: TEventActions) => {
 const onlinePBXPluginContext = createContext<IOnlinePBXPluginContext | undefined>(undefined)
 
 interface IMeProviderProps {
-  children: ReactNode
-  apiKey: string
   accountName: string
+  apiKey: string
+  children: ReactNode
+  wsPort?: number
 }
 
-export const OnlinePBXPluginProvider = ({ children, apiKey, accountName }: IMeProviderProps) => {
+export const OnlinePBXPluginProvider = ({ children, apiKey, accountName, wsPort }: IMeProviderProps) => {
   const [state, dispatch] = useReducer(reducer, {
     accountName,
     apiKey,
-    calls: false,
+    wsPort,
+    calls: true,
     gateway: false,
-    isConnect: false,
+    isConnect: true,
     userRegistration: false,
     userBlf: false,
   })
-  const [providerState, setProviderState] = useState<IOnlinePBXPluginProviderState>({ action: ECallState.NO_ACTION })
+  const [providerState, setProviderState] = useState<IOnlinePBXPluginProviderState>({
+    action: ECallState.NO_ACTION,
+    subscribed: false,
+  })
   const [apiService] = useState<IApiInstance>(new Api(apiKey, accountName))
-  const [events, setEvents] = useState("")
+  const { connect, hangUpCall } = useWebsocket(state, { setState: setProviderState, state: providerState })
   const authFetchedRef = useRef(false)
 
   const makeCall: TMakeCall = (phoneNumber, props): void => {
@@ -71,11 +76,9 @@ export const OnlinePBXPluginProvider = ({ children, apiKey, accountName }: IMePr
   }
 
   const resetCall: TResetCall = (props): void => {
-    setProviderState((prev) => ({
-      ...prev,
-      action: ECallState.NO_ACTION,
-      callerInfo: undefined,
-    }))
+    if (providerState.callInfo?.channel_uuid) {
+      hangUpCall({ uuid: providerState.callInfo?.channel_uuid })
+    }
     if (props?.onSuccess) {
       props.onSuccess()
     }
@@ -92,9 +95,9 @@ export const OnlinePBXPluginProvider = ({ children, apiKey, accountName }: IMePr
   }
 
   useEffect(() => {
-    if (state.isConnect && accountName && apiKey) wsConnect(state, setEvents)
+    if (accountName && apiKey) connect()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.isConnect])
+  }, [accountName, apiKey])
 
   useEffect(() => {
     if (!authFetchedRef.current && accountName && apiKey) {
