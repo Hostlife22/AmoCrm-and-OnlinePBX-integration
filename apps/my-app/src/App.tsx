@@ -5,10 +5,7 @@ import "./App.css"
 
 function App() {
   return (
-    <OnlinePBXPluginProvider
-      apiKey="bG1nOUprY1FIVmFDZEY1ZlhONTkzOGNwaFZmczlqdG8"
-      accountName="pbx21135.onpbx.ru"
-    >
+    <OnlinePBXPluginProvider apiKey={process.env.REACT_APP_API_KEY || ""} accountName={process.env.REACT_APP_ACCOUNT_NAME || ""}>
       <div className="App">
         <header className="App-header">
           <p>
