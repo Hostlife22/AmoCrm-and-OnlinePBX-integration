@@ -58,8 +58,8 @@ importers:
         specifier: ^5.3.2
         version: 5.3.2
       web-vitals:
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.5.0
     devDependencies:
       '@boilerplate/eslint-config':
         specifier: workspace:*
@@ -147,8 +147,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       web-vitals:
-        specifier: ^2.1.4
-        version: 2.1.4
+        specifier: ^3.0.0
+        version: 3.5.0
     devDependencies:
       '@boilerplate/eslint-config':
         specifier: workspace:*
@@ -10732,8 +10732,8 @@ packages:
       minimalistic-assert: 1.0.1
     dev: false
 
-  /web-vitals@2.1.4:
-    resolution: {integrity: sha512-sVWcwhU5mX6crfI5Vd2dC4qchyTqxV8URinzt25XqVh+bHEPGH4C3NPrNionCP7Obx59wrYEbNlw4Z8sjALzZg==}
+  /web-vitals@3.5.0:
+    resolution: {integrity: sha512-f5YnCHVG9Y6uLCePD4tY8bO/Ge15NPEQWtvm3tPzDKygloiqtb4SVqRHBcrIAqo2ztqX5XueqDn97zHF0LdT6w==}
     dev: false
 
   /webidl-conversions@4.0.2:
