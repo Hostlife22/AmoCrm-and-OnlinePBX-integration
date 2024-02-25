@@ -139,7 +139,7 @@ importers:
         version: 4.5.0
       phone:
         specifier: ^3.1.37
-        version: 3.1.41
+        version: 3.1.42
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -5440,10 +5440,6 @@ packages:
       is-date-object: 1.0.5
       is-symbol: 1.0.4
 
-  /escalade@3.1.1:
-    resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
-    engines: {node: '>=6'}
-
   /escalade@3.1.2:
     resolution: {integrity: sha512-ErCHMCae19vR8vQGe50xIsVomy19rg6gFu3+r3jkEO46suLMWBksvVyoGgQV+jOfl84ZSOSlmv6Gxa89PmTGmA==}
     engines: {node: '>=6'}
@@ -8525,8 +8521,8 @@ packages:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
     dev: false
 
-  /phone@3.1.41:
-    resolution: {integrity: sha512-sjYk1DdjYqSbcfYyeHQ6FNXr2RH7gHtkQflyleSBQ0V83db3tO9sXHhsr5WyYdsXaOW2tBg4p+P8HVgwFRJp+Q==}
+  /phone@3.1.42:
+    resolution: {integrity: sha512-J+cbZtGcN/ph10TRxwCLYZx9/k4WOU1wImMiUiUjr/2sWnY7bR7CadehbsM8E9UyG+/shgmH++eKbhD0kR4EZA==}
     engines: {node: '>=12'}
     dev: false
 
@@ -8993,7 +8989,7 @@ packages:
     dependencies:
       lilconfig: 3.1.1
       postcss: 8.4.35
-      yaml: 2.3.4
+      yaml: 2.4.0
     dev: true
 
   /postcss-loader@6.2.1(postcss@8.4.31)(webpack@5.89.0):
@@ -11601,7 +11597,7 @@ packages:
       browserslist: '>= 4.21.0'
     dependencies:
       browserslist: 4.22.1
-      escalade: 3.1.1
+      escalade: 3.1.2
       picocolors: 1.0.0
 
   /update-browserslist-db@1.0.13(browserslist@4.23.0):
@@ -12223,9 +12219,10 @@ packages:
     resolution: {integrity: sha512-N/lyzTPaJasoDmfV7YTrYCI0G/3ivm/9wdG0aHuheKowWQwGTsK0Eoiw6utmzAnI6pkJa0DUVygvp3spqqEKXg==}
     engines: {node: '>= 14'}
 
-  /yaml@2.3.4:
-    resolution: {integrity: sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==}
+  /yaml@2.4.0:
+    resolution: {integrity: sha512-j9iR8g+/t0lArF4V6NE/QCfT+CO7iLqrXAHZbJdo+LfjqP1vR8Fg5bSiaq6Q2lOD1AUEVrEVIgABvBFYojJVYQ==}
     engines: {node: '>= 14'}
+    hasBin: true
     dev: true
 
   /yargs-parser@20.2.9:
