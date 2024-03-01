@@ -194,7 +194,7 @@ importers:
         version: 18.2.19
       '@types/rollup-plugin-peer-deps-external':
         specifier: ^2.2.4
-        version: 2.2.4
+        version: 2.2.5
       autoprefixer:
         specifier: ^10.4.16
         version: 10.4.17(postcss@8.4.35)
@@ -3198,10 +3198,9 @@ packages:
     resolution: {integrity: sha512-wWKOClTTiizcZhXnPY4wikVAwmdYHp8q6DmC+EJUzAMsycb7HB32Kh9RN4+0gExjmPmZSAQjgURXIGATPegAvA==}
     dev: false
 
-  /@types/rollup-plugin-peer-deps-external@2.2.4:
-    resolution: {integrity: sha512-UbIYkFpYjWruIOyzOoatwtzjs/gbyT+2ndBmuKExNSncbJChYLDWxjUsrgaOGo2EyGB3u2/b8V/8wmQ1dgcGrQ==}
+  /@types/rollup-plugin-peer-deps-external@2.2.5:
+    resolution: {integrity: sha512-BvxHEsbzspw1BDyktFdjx5AQ5OHZGFJuDUAj+dDzDT0pfnz9/vr8sxxQwGINsptaltxbTVBTAxlZujM62F79XA==}
     dependencies:
-      '@types/node': 18.19.21
       rollup: 0.63.5
     dev: true
 
