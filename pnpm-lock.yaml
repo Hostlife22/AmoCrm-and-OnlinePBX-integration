@@ -209,7 +209,7 @@ importers:
         version: 4.17.2
       rollup-plugin-dts:
         specifier: ^6.1.0
-        version: 6.1.0(rollup@4.17.2)(typescript@5.4.5)
+        version: 6.1.1(rollup@4.17.2)(typescript@5.4.5)
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
         version: 2.2.4(rollup@4.17.2)
@@ -252,10 +252,6 @@ packages:
 
   '@babel/code-frame@7.22.13':
     resolution: {integrity: sha512-XktuhWlJ5g+3TJXc5upd9Ks1HutSArik6jf2eAjYFyIOf4ej3RN+184cZbzDvbPnuTJIUhPKKJE3cIsYTiAT3w==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/code-frame@7.24.1':
-    resolution: {integrity: sha512-bC49z4spJQR3j8vFtJBLqzyzFV0ciuL5HYX7qfSl3KEqeMVV+eTquRvmXxpvB0AMubRrvv7y5DILiLLPi57Ewg==}
     engines: {node: '>=6.9.0'}
 
   '@babel/code-frame@7.24.2':
@@ -448,6 +444,10 @@ packages:
 
   '@babel/highlight@7.24.2':
     resolution: {integrity: sha512-Yac1ao4flkTxTteCDZLEvdxg2fZfz1v8M4QpaGypq/WPDqg3ijHYbDfs+LG5hvzSoqaSZ9/Z9lKSP3CjZjv+pA==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/highlight@7.24.5':
+    resolution: {integrity: sha512-8lLmua6AVh/8SLJRRVD6V8p73Hir9w5mJrhE+IPpILG31KKlI9iz5zmBYKcWPS59qSfgP9RaSBQSHHE81WKuEw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/parser@7.22.16':
@@ -4154,6 +4154,9 @@ packages:
   magic-string@0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
 
+  magic-string@0.30.10:
+    resolution: {integrity: sha512-iIRwTIf0QKV3UAnYK4PU8uiEc4SRh5jX0mwpIwETPpHdhVM4f53RSwS/vXvN1JhGX+Cs7B8qIq3d6AH49O5fAQ==}
+
   magic-string@0.30.5:
     resolution: {integrity: sha512-7xlpfBaQaP/T6Vh8MO/EqXSW5En6INHEvEXQiuff7Gku0PWjU3uf6w/j9o7O+SpB5fOAkrI5HeoNgwjEO0pFsA==}
     engines: {node: '>=12'}
@@ -5258,8 +5261,8 @@ packages:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
     hasBin: true
 
-  rollup-plugin-dts@6.1.0:
-    resolution: {integrity: sha512-ijSCPICkRMDKDLBK9torss07+8dl9UpY9z1N/zTeA1cIqdzMlpkV3MOOC7zukyvQfDyxa1s3Dl2+DeiP/G6DOw==}
+  rollup-plugin-dts@6.1.1:
+    resolution: {integrity: sha512-aSHRcJ6KG2IHIioYlvAOcEq6U99sVtqDDKVhnwt70rW6tsz3tv5OSjEiWcgzfsHdLyGXZ/3b/7b/+Za3Y6r1XA==}
     engines: {node: '>=16'}
     peerDependencies:
       rollup: ^3.29.4 || ^4
@@ -6264,15 +6267,10 @@ snapshots:
       '@babel/highlight': 7.24.2
       chalk: 2.4.2
 
-  '@babel/code-frame@7.24.1':
-    dependencies:
-      '@babel/highlight': 7.24.2
-      picocolors: 1.0.1
-
   '@babel/code-frame@7.24.2':
     dependencies:
-      '@babel/highlight': 7.24.2
-      picocolors: 1.0.0
+      '@babel/highlight': 7.24.5
+      picocolors: 1.0.1
 
   '@babel/compat-data@7.22.9': {}
 
@@ -6281,7 +6279,7 @@ snapshots:
   '@babel/core@7.22.19':
     dependencies:
       '@ampproject/remapping': 2.2.1
-      '@babel/code-frame': 7.24.1
+      '@babel/code-frame': 7.24.2
       '@babel/generator': 7.22.15
       '@babel/helper-compilation-targets': 7.22.15
       '@babel/helper-module-transforms': 7.22.19(@babel/core@7.22.19)
@@ -6522,7 +6520,14 @@ snapshots:
       '@babel/helper-validator-identifier': 7.22.20
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.0.0
+      picocolors: 1.0.1
+
+  '@babel/highlight@7.24.5':
+    dependencies:
+      '@babel/helper-validator-identifier': 7.24.5
+      chalk: 2.4.2
+      js-tokens: 4.0.0
+      picocolors: 1.0.1
 
   '@babel/parser@7.22.16':
     dependencies:
@@ -6877,7 +6882,7 @@ snapshots:
       '@babel/helper-hoist-variables': 7.22.5
       '@babel/helper-module-transforms': 7.22.19(@babel/core@7.22.19)
       '@babel/helper-plugin-utils': 7.22.5
-      '@babel/helper-validator-identifier': 7.22.20
+      '@babel/helper-validator-identifier': 7.24.5
 
   '@babel/plugin-transform-modules-umd@7.22.5(@babel/core@7.22.19)':
     dependencies:
@@ -7203,7 +7208,7 @@ snapshots:
 
   '@babel/template@7.22.15':
     dependencies:
-      '@babel/code-frame': 7.24.1
+      '@babel/code-frame': 7.24.2
       '@babel/parser': 7.22.16
       '@babel/types': 7.22.19
 
@@ -7215,7 +7220,7 @@ snapshots:
 
   '@babel/traverse@7.22.19':
     dependencies:
-      '@babel/code-frame': 7.24.1
+      '@babel/code-frame': 7.24.2
       '@babel/generator': 7.22.15
       '@babel/helper-environment-visitor': 7.22.20
       '@babel/helper-function-name': 7.22.5
@@ -9992,7 +9997,7 @@ snapshots:
 
   fork-ts-checker-webpack-plugin@6.5.3(eslint@8.57.0)(typescript@5.4.5)(webpack@5.89.0):
     dependencies:
-      '@babel/code-frame': 7.24.1
+      '@babel/code-frame': 7.24.2
       '@types/json-schema': 7.0.13
       chalk: 4.1.2
       chokidar: 3.6.0
@@ -11165,6 +11170,10 @@ snapshots:
     dependencies:
       sourcemap-codec: 1.4.8
 
+  magic-string@0.30.10:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.4.15
+
   magic-string@0.30.5:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
@@ -12257,7 +12266,7 @@ snapshots:
 
   react-dev-utils@12.0.1(eslint@8.57.0)(typescript@5.4.5)(webpack@5.89.0):
     dependencies:
-      '@babel/code-frame': 7.24.1
+      '@babel/code-frame': 7.24.2
       address: 1.2.2
       browserslist: 4.22.1
       chalk: 4.1.2
@@ -12536,9 +12545,9 @@ snapshots:
     dependencies:
       glob: 7.2.3
 
-  rollup-plugin-dts@6.1.0(rollup@4.17.2)(typescript@5.4.5):
+  rollup-plugin-dts@6.1.1(rollup@4.17.2)(typescript@5.4.5):
     dependencies:
-      magic-string: 0.30.5
+      magic-string: 0.30.10
       rollup: 4.17.2
       typescript: 5.4.5
     optionalDependencies:
