@@ -139,7 +139,7 @@ importers:
         version: 4.5.0
       phone:
         specifier: ^3.1.37
-        version: 3.1.51
+        version: 3.1.52
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -2926,8 +2926,8 @@ packages:
   electron-to-chromium@1.5.4:
     resolution: {integrity: sha512-orzA81VqLyIGUEA77YkVA1D+N+nNfl2isJVjjmOyrlxuooZ19ynb+dOlaDTqd/idKRS9lDCSBmtzM+kyCsMnkA==}
 
-  electron-to-chromium@1.5.43:
-    resolution: {integrity: sha512-NxnmFBHDl5Sachd2P46O7UJiMaMHMLSofoIWVJq3mj8NJgG0umiSeljAVP9lGzjI0UDLJJ5jjoGjcrB8RSbjLQ==}
+  electron-to-chromium@1.5.45:
+    resolution: {integrity: sha512-vOzZS6uZwhhbkZbcRyiy99Wg+pYFV5hk+5YaECvx0+Z31NR3Tt5zS6dze2OepT6PCTzVzT0dIJItti+uAW5zmw==}
 
   emittery@0.10.2:
     resolution: {integrity: sha512-aITqOwnLanpHLNXZJENbOgjUBeHocD+xsSJmNrjovKBW5HbSpW3d1pEls7GFQPUWXiwG9+0P4GtHfEqC/4M0Iw==}
@@ -4613,8 +4613,8 @@ packages:
   performance-now@2.1.0:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
 
-  phone@3.1.51:
-    resolution: {integrity: sha512-ggy58LoEAb6LPZEyz1iXz7dQKbDAwp6V6yQgRQUDSlx4HgKm2YGETA5Ns/39/HQ+QL74+OBR05xzdUhi6TMHLQ==}
+  phone@3.1.52:
+    resolution: {integrity: sha512-BQ0bDb7ngmIMohM+DgbzuSAaM0ERBecT1SAhu3bzFGX10XdGeQ+bJzIEidoHWUaiSNAhGqXuMWAfUWdxdaajpw==}
     engines: {node: '>=12'}
 
   picocolors@0.2.1:
@@ -9000,7 +9000,7 @@ snapshots:
   browserslist@4.24.2:
     dependencies:
       caniuse-lite: 1.0.30001669
-      electron-to-chromium: 1.5.43
+      electron-to-chromium: 1.5.45
       node-releases: 2.0.18
       update-browserslist-db: 1.1.1(browserslist@4.24.2)
 
@@ -9613,7 +9613,7 @@ snapshots:
 
   electron-to-chromium@1.5.4: {}
 
-  electron-to-chromium@1.5.43: {}
+  electron-to-chromium@1.5.45: {}
 
   emittery@0.10.2: {}
 
@@ -11760,7 +11760,7 @@ snapshots:
 
   performance-now@2.1.0: {}
 
-  phone@3.1.51: {}
+  phone@3.1.52: {}
 
   picocolors@0.2.1: {}
 
