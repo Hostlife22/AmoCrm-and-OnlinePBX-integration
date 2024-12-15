@@ -166,8 +166,8 @@ importers:
         specifier: ^6.0.1
         version: 6.1.0(rollup@4.28.1)
       '@rollup/plugin-node-resolve':
-        specifier: ^15.2.3
-        version: 15.3.1(rollup@4.28.1)
+        specifier: ^16.0.0
+        version: 16.0.0(rollup@4.28.1)
       '@rollup/plugin-replace':
         specifier: ^5.0.5
         version: 5.0.7(rollup@4.28.1)
@@ -1399,8 +1399,8 @@ packages:
     peerDependencies:
       rollup: ^1.20.0||^2.0.0
 
-  '@rollup/plugin-node-resolve@15.3.1':
-    resolution: {integrity: sha512-tgg6b91pAybXHJQMAAwW9VuWBO6Thi+q7BCNARLwSqlmsHz0XYURtGvh/AuwSADXSI4h/2uHbs7s4FzlZDGSGA==}
+  '@rollup/plugin-node-resolve@16.0.0':
+    resolution: {integrity: sha512-0FPvAeVUT/zdWoO0jnb/V5BlBsUSNfkIOtFHzMO4H9MOklrmQFY6FduVHKucNb/aTFxvnGhj4MNj/T1oNdDfNg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.78.0||^3.0.0||^4.0.0
@@ -6599,7 +6599,7 @@ snapshots:
       '@babel/helper-plugin-utils': 7.22.5
       debug: 4.3.7
       lodash.debounce: 4.0.8
-      resolve: 1.22.6
+      resolve: 1.22.9
     transitivePeerDependencies:
       - supports-color
 
@@ -7885,10 +7885,10 @@ snapshots:
       builtin-modules: 3.3.0
       deepmerge: 4.3.1
       is-module: 1.0.0
-      resolve: 1.22.6
+      resolve: 1.22.9
       rollup: 2.79.2
 
-  '@rollup/plugin-node-resolve@15.3.1(rollup@4.28.1)':
+  '@rollup/plugin-node-resolve@16.0.0(rollup@4.28.1)':
     dependencies:
       '@rollup/pluginutils': 5.1.4(rollup@4.28.1)
       '@types/resolve': 1.20.2
@@ -8898,7 +8898,7 @@ snapshots:
     dependencies:
       '@babel/runtime': 7.22.15
       cosmiconfig: 7.1.0
-      resolve: 1.22.6
+      resolve: 1.22.9
 
   babel-plugin-named-asset-import@0.3.8(@babel/core@7.22.19):
     dependencies:
