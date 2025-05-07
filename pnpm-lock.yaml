@@ -16,8 +16,8 @@ importers:
         specifier: ^3.0.0
         version: 3.5.3
       typescript:
-        specifier: 5.7.2
-        version: 5.7.2
+        specifier: 5.8.3
+        version: 5.8.3
 
   apps/my-app:
     dependencies:
@@ -120,8 +120,8 @@ importers:
         specifier: ^3.3.1
         version: 3.4.17
       typescript:
-        specifier: 5.7.2
-        version: 5.7.2
+        specifier: 5.8.3
+        version: 5.8.3
 
   packages/online-pbx-plugin:
     dependencies:
@@ -176,7 +176,7 @@ importers:
         version: 0.4.4(rollup@4.40.2)
       '@rollup/plugin-typescript':
         specifier: ^11.1.5
-        version: 11.1.6(rollup@4.40.2)(tslib@2.6.2)(typescript@5.7.2)
+        version: 11.1.6(rollup@4.40.2)(tslib@2.6.2)(typescript@5.8.3)
       '@types/jest':
         specifier: ^27.5.2
         version: 27.5.2
@@ -209,7 +209,7 @@ importers:
         version: 4.40.2
       rollup-plugin-dts:
         specifier: ^6.1.0
-        version: 6.2.1(rollup@4.40.2)(typescript@5.7.2)
+        version: 6.2.1(rollup@4.40.2)(typescript@5.8.3)
       rollup-plugin-peer-deps-external:
         specifier: ^2.2.4
         version: 2.2.4(rollup@4.40.2)
@@ -220,8 +220,8 @@ importers:
         specifier: ^3.3.1
         version: 3.4.17
       typescript:
-        specifier: 5.7.2
-        version: 5.7.2
+        specifier: 5.8.3
+        version: 5.8.3
 
 packages:
 
@@ -6020,11 +6020,6 @@ packages:
   typedarray-to-buffer@3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
 
-  typescript@5.7.2:
-    resolution: {integrity: sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
   typescript@5.8.3:
     resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
     engines: {node: '>=14.17'}
@@ -7853,11 +7848,11 @@ snapshots:
     optionalDependencies:
       rollup: 4.40.2
 
-  '@rollup/plugin-typescript@11.1.6(rollup@4.40.2)(tslib@2.6.2)(typescript@5.7.2)':
+  '@rollup/plugin-typescript@11.1.6(rollup@4.40.2)(tslib@2.6.2)(typescript@5.8.3)':
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@4.40.2)
       resolve: 1.22.8
-      typescript: 5.7.2
+      typescript: 5.8.3
     optionalDependencies:
       rollup: 4.40.2
       tslib: 2.6.2
@@ -12804,11 +12799,11 @@ snapshots:
     dependencies:
       glob: 7.2.3
 
-  rollup-plugin-dts@6.2.1(rollup@4.40.2)(typescript@5.7.2):
+  rollup-plugin-dts@6.2.1(rollup@4.40.2)(typescript@5.8.3):
     dependencies:
       magic-string: 0.30.17
       rollup: 4.40.2
-      typescript: 5.7.2
+      typescript: 5.8.3
     optionalDependencies:
       '@babel/code-frame': 7.27.1
 
@@ -13529,8 +13524,6 @@ snapshots:
   typedarray-to-buffer@3.1.5:
     dependencies:
       is-typedarray: 1.0.0
-
-  typescript@5.7.2: {}
 
   typescript@5.8.3: {}
 
