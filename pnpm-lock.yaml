@@ -175,8 +175,8 @@ importers:
         specifier: ^0.4.4
         version: 0.4.4(rollup@4.46.2)
       '@rollup/plugin-typescript':
-        specifier: ^11.1.5
-        version: 11.1.6(rollup@4.46.2)(tslib@2.6.2)(typescript@5.9.2)
+        specifier: ^12.0.0
+        version: 12.3.0(rollup@4.46.2)(tslib@2.6.2)(typescript@5.9.2)
       '@types/jest':
         specifier: ^27.5.2
         version: 27.5.2
@@ -1420,8 +1420,8 @@ packages:
       rollup:
         optional: true
 
-  '@rollup/plugin-typescript@11.1.6':
-    resolution: {integrity: sha512-R92yOmIACgYdJ7dJ97p4K69I8gg6IEHt8M7dUBxN3W6nrO8uUxX5ixl0yU/N3aZTi8WhPuICvOHXQvF6FaykAA==}
+  '@rollup/plugin-typescript@12.3.0':
+    resolution: {integrity: sha512-7DP0/p7y3t67+NabT9f8oTBFE6gGkto4SA6Np2oudYmZE/m1dt8RB0SjL1msMxFpLo631qjRCcBlAbq1ml/Big==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.14.0||^3.0.0||^4.0.0
@@ -8184,10 +8184,10 @@ snapshots:
     optionalDependencies:
       rollup: 4.46.2
 
-  '@rollup/plugin-typescript@11.1.6(rollup@4.46.2)(tslib@2.6.2)(typescript@5.9.2)':
+  '@rollup/plugin-typescript@12.3.0(rollup@4.46.2)(tslib@2.6.2)(typescript@5.9.2)':
     dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@4.46.2)
-      resolve: 1.22.8
+      '@rollup/pluginutils': 5.1.4(rollup@4.46.2)
+      resolve: 1.22.9
       typescript: 5.9.2
     optionalDependencies:
       rollup: 4.46.2
@@ -11692,7 +11692,7 @@ snapshots:
       jest-pnp-resolver: 1.2.3(jest-resolve@27.5.1)
       jest-util: 27.5.1
       jest-validate: 27.5.1
-      resolve: 1.22.6
+      resolve: 1.22.9
       resolve.exports: 1.1.1
       slash: 3.0.0
 
