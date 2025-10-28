@@ -139,7 +139,7 @@ importers:
         version: 4.5.0
       phone:
         specifier: ^3.1.37
-        version: 3.1.66
+        version: 3.1.67
       react:
         specifier: ^18.2.0
         version: 18.3.1
@@ -4875,8 +4875,8 @@ packages:
   performance-now@2.1.0:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
 
-  phone@3.1.66:
-    resolution: {integrity: sha512-xElqlpBlI80ltMhcrjCi5vPYpczIlRi+HRg8Nx0ogvMAyNBKSz7OO7sqSWobhlTK4EEq27g9TL2V3TAPImqsYQ==}
+  phone@3.1.67:
+    resolution: {integrity: sha512-7XdKmQYhKcoDXQWM8lnnPMhcLrPEIo2uQByJu4Seo2ZfvOgonr2tP9ueBjZRdxIhfm8X1VeZU0+JRrEyJSs1SQ==}
     engines: {node: '>=12'}
 
   picocolors@0.2.1:
@@ -12462,7 +12462,7 @@ snapshots:
 
   performance-now@2.1.0: {}
 
-  phone@3.1.66: {}
+  phone@3.1.67: {}
 
   picocolors@0.2.1: {}
 
