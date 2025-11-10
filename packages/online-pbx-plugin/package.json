@@ -42,7 +42,7 @@
     "@types/react-dom": "^18.2.16",
     "@types/rollup-plugin-peer-deps-external": "^2.2.4",
     "autoprefixer": "^10.4.16",
-    "eslint": "8.57.1",
+    "eslint": "9.39.1",
     "prettier": "^3.0.0",
     "rollup": "^4.5.0",
     "rollup-plugin-dts": "^6.1.0",
